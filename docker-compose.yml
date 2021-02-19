@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    ports:
+      - ${PORTAINER_PORT}:9000
+    volumes:
+      - /root/portainer/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    networks:
+      - portainer-network
+
+networks:
+  portainer-network:
